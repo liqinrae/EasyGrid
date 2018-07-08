@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>afGrid</title>
+
+    <style>
+        body {
+            font-family: 'Lucida Grande', 'segoe ui', Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            color: #333;
+        }
+    </style>
+
+    <link rel="stylesheet" href="../lib/jqueryui/jquery-ui.css">
+    <link rel="stylesheet" href="../css/jquery.ui.afgrid.css">
+    <script src="../lib/jquery/jquery-2.1.3.js"></script>
+    <script src="../lib/jqueryui/jquery-ui.js"></script>
+    <script src="../lib/jquery/jquery-mockjax.js"></script>
+    <script src="../js/grid.locale-en.js"></script>
+    <script src="../js/jquery.ui.afgrid.js"></script>
+    <script src="../lib/jquery/jquery-dateformat.js"></script>
+    <script>
+        //<![CDATA[
+        $(function () {
+            "use strict";
+
+            //mock ajax call for now:
+            $.mockjax.clear();
+            $.mockjax({
+                url: '/Producer/List',
+                type: 'GET',
+                dataType: 'json',
+                data: {},
+                responseTime: 750,
+                response: function () {
+                    this.responseText = {
+                        data: [
+                            { hiddenCol: 1, irmaNumber: '00001', farmName: 'BCMMD TEST', name: 'BCMMB', address: 'BCMMB' },
+                            { hiddenCol: 2, irmaNumber: '00040', farmName: 'ABBYVIEW DAIRIES LTD TEST', name: 'VANDER KOOI THEO PR', address: '50338 CASTLLEMAN ROAD' },
+                            { hiddenCol: 3, irmaNumber: '00045', farmName: 'ABBYVIEW DAIRIES LTD', name: 'THEO VANDERKOOI, PRE', address: '' },
+                            { hiddenCol: 4, irmaNumber: '00046', farmName: 'ABBYVIEW DAIRIES VI', name: 'THEO VANDERKOOI, PRE', address: '1356 S. SUMAS WAY' },
+                            { hiddenCol: 5, irmaNumber: '00110', farmName: '', name: 'MARK SUNDER', address: '	38201 JONES ROAD' },
+                            { hiddenCol: 6, irmaNumber: '00200', farmName: '', name: 'ADAMS WAYNE D', address: '890 HWY 3' },
+                            { hiddenCol: 7, irmaNumber: '00310', farmName: 'AGASSIZ VIEW FARMS', name: 'TWILHAAR GORDON H', address: '5580 ELSE' },
+                            { hiddenCol: 8, irmaNumber: '00324', farmName: 'ALDER VIEW DAIRY LTD', name: 'ENNS WALTER & KATHY', address: '2055 264 ST' },
+                            { hiddenCol: 9, irmaNumber: '00475', farmName: 'TEST', name: 'RUSSENBERGER R PRES', address: '	1524 LAMSON ROAD' },
+
+                        ],
+                        page: 1,
+                        records: 9
+                    }
+                }
+
+            });
+
+            $("#grid").afGrid({
+                caption: 'afGrid',
+                colModel: [
+                    { name: "hiddenCol", hidden: true },
+                    { name: "irmaNumber", label: "Irma Number", key: true },
+                    { name: "farmName", label: "Farm Name" },
+                    { name: "name", label: "Name", width: 200 },
+                    { name: "address", label: "Address", width: 250 }
+                ],
+                dataType: 'JSON',
+                mode: 'GET',
+                url: '/Producer/List',
+                postData: {},
+                width: '800px',
+                height: '300px',
+                loadOnce: true,
+                pageSize: 5
+            });
+        });
+    //]]>
+    </script>
+</head>
+
+<body>
+    <h2>afGrid</h2>
+    <h3>Example - Load Once from Server</h3>
+    <div id="grid"></div>
+</body>
+
+</html>

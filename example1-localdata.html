@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>afGrid</title>
+
+    <style>
+        body {
+            font-family: 'Lucida Grande','segoe ui',Arial,Helvetica,sans-serif;
+            font-size: 13px;
+            color: #333;
+        }
+    </style>
+
+    <link rel="stylesheet" href="../lib/jqueryui/jquery-ui.css">
+    <link rel="stylesheet" href="../css/jquery.ui.afgrid.css">
+    <script src="../lib/jquery/jquery-2.1.3.js"></script>
+    <script src="../lib/jqueryui/jquery-ui.js"></script>
+    <script src="../lib/jquery/jquery-mockjax.js"></script>
+    <script src="../js/grid.locale-en.js"></script>
+    <script src="../js/jquery.ui.afgrid.js"></script>
+    <script src="../lib/jquery/jquery-dateformat.js"></script>
+    <script>
+    //<![CDATA[
+    $(function () {
+        "use strict";
+        $("#grid").afGrid({
+            caption: 'afGrid',
+            colModel: [
+                { name: "hiddenCol", hidden: true },
+                { name: "irmaNumber", label: "Irma Number", key: true, sortable: true },
+                { name: "farmName", label: "Farm Name", sortable: false },
+                { name: "name", label: "Name", width: 200 },
+                { name: "address", label: "Address", width: 250 },
+                { name: "phoneNumber", label: "Phone Number", width: 120 },
+                { name : "price", label: "price",  formatter: currencyFmatter},
+                { name : "date", label: "date", formatter: 'date', formatoptions: {format: "dd/MM/yyyy HH:mm:ss"}},
+                { name : "link", label: "link", formatter: 'link'}
+            ],
+            dataType: 'clientSide',
+            localData: {
+                data: [
+                    { hiddenCol: 1, irmaNumber: '00001', farmName: 'BCMMD TEST', name: 'BCMMB', address: 'BCMMB', phoneNumber: '', price : '100345.5612333', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 2, irmaNumber: '00040', farmName: 'ABBYVIEW DAIRIES LTD TEST', name: 'VANDER KOOI THEO PR', address: '50338 CASTLLEMAN ROAD', phoneNumber: '', price: '3233.3', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 3, irmaNumber: '00045', farmName: 'ABBYVIEW DAIRIES LTD', name: 'THEO VANDERKOOI, PRE', address: '', phoneNumber: '', price: '43.424', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 4, irmaNumber: '00046', farmName: 'ABBYVIEW DAIRIES VI', name: 'THEO VANDERKOOI, PRE', address: '1356 S. SUMAS WAY', phoneNumber: '', price: '534535', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 5, irmaNumber: '00110', farmName: '', name: 'MARK SUNDER', address: '	38201 JONES ROAD', phoneNumber: '(905) 353-8992', price: '45645.65', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 6, irmaNumber: '00200', farmName: '', name: 'ADAMS WAYNE D', address: '890 HWY 3', phoneNumber: '', price: '567567567', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 7, irmaNumber: '00310', farmName: 'AGASSIZ VIEW FARMS', name: 'TWILHAAR GORDON H', address: '5580 ELSE', phoneNumber: '', price: '67.8678', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 8, irmaNumber: '00324', farmName: 'ALDER VIEW DAIRY LTD', name: 'ENNS WALTER & KATHY', address: '2055 264 ST', phoneNumber: '', price: '789789', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 9, irmaNumber: '00475', farmName: 'TEST', name: 'RUSSENBERGER R PRES', address: '	1524 LAMSON ROAD', phoneNumber: '', price: '890890', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 10, irmaNumber: '00001', farmName: 'BCMMD TEST', name: 'BCMMB', address: 'BCMMB', phoneNumber: '', price : '100345.5612333', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 11, irmaNumber: '00040', farmName: 'ABBYVIEW DAIRIES LTD TEST', name: 'VANDER KOOI THEO PR', address: '50338 CASTLLEMAN ROAD', phoneNumber: '', price: '3233.3', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 12, irmaNumber: '00045', farmName: 'ABBYVIEW DAIRIES LTD', name: 'THEO VANDERKOOI, PRE', address: '', phoneNumber: '', price: '43.424', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 13, irmaNumber: '00046', farmName: 'ABBYVIEW DAIRIES VI', name: 'THEO VANDERKOOI, PRE', address: '1356 S. SUMAS WAY', phoneNumber: '', price: '534535', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 14, irmaNumber: '00110', farmName: '', name: 'MARK SUNDER', address: '	38201 JONES ROAD', phoneNumber: '(905) 353-8992', price: '45645.65', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 15, irmaNumber: '00200', farmName: '', name: 'ADAMS WAYNE D', address: '890 HWY 3', phoneNumber: '', price: '567567567', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 16, irmaNumber: '00310', farmName: 'AGASSIZ VIEW FARMS', name: 'TWILHAAR GORDON H', address: '5580 ELSE', phoneNumber: '', price: '67.8678', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 17, irmaNumber: '00324', farmName: 'ALDER VIEW DAIRY LTD', name: 'ENNS WALTER & KATHY', address: '2055 264 ST', phoneNumber: '', price: '789789', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 18, irmaNumber: '00475', farmName: 'TEST', name: 'RUSSENBERGER R PRES', address: '	1524 LAMSON ROAD', phoneNumber: '', price: '890890', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 19, irmaNumber: '00001', farmName: 'BCMMD TEST', name: 'BCMMB', address: 'BCMMB', phoneNumber: '', price : '100345.5612333', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 20, irmaNumber: '00040', farmName: 'ABBYVIEW DAIRIES LTD TEST', name: 'VANDER KOOI THEO PR', address: '50338 CASTLLEMAN ROAD', phoneNumber: '', price: '3233.3', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 21, irmaNumber: '00045', farmName: 'ABBYVIEW DAIRIES LTD', name: 'THEO VANDERKOOI, PRE', address: '', phoneNumber: '', price: '43.424', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 22, irmaNumber: '00046', farmName: 'ABBYVIEW DAIRIES VI', name: 'THEO VANDERKOOI, PRE', address: '1356 S. SUMAS WAY', phoneNumber: '', price: '534535', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 23, irmaNumber: '00110', farmName: '', name: 'MARK SUNDER', address: '	38201 JONES ROAD', phoneNumber: '(905) 353-8992', price: '45645.65', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 24, irmaNumber: '00200', farmName: '', name: 'ADAMS WAYNE D', address: '890 HWY 3', phoneNumber: '', price: '567567567', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 25, irmaNumber: '00310', farmName: 'AGASSIZ VIEW FARMS', name: 'TWILHAAR GORDON H', address: '5580 ELSE', phoneNumber: '', price: '67.8678', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 26, irmaNumber: '00324', farmName: 'ALDER VIEW DAIRY LTD', name: 'ENNS WALTER & KATHY', address: '2055 264 ST', phoneNumber: '', price: '789789', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 27, irmaNumber: '00475', farmName: 'TEST', name: 'RUSSENBERGER R PRES', address: '	1524 LAMSON ROAD', phoneNumber: '', price: '890890', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 28, irmaNumber: '00001', farmName: 'BCMMD TEST', name: 'BCMMB', address: 'BCMMB', phoneNumber: '', price : '100345.5612333', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 29, irmaNumber: '00040', farmName: 'ABBYVIEW DAIRIES LTD TEST', name: 'VANDER KOOI THEO PR', address: '50338 CASTLLEMAN ROAD', phoneNumber: '', price: '3233.3', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 30, irmaNumber: '00045', farmName: 'ABBYVIEW DAIRIES LTD', name: 'THEO VANDERKOOI, PRE', address: '', phoneNumber: '', price: '43.424', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 31, irmaNumber: '00046', farmName: 'ABBYVIEW DAIRIES VI', name: 'THEO VANDERKOOI, PRE', address: '1356 S. SUMAS WAY', phoneNumber: '', price: '534535', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 32, irmaNumber: '00110', farmName: '', name: 'MARK SUNDER', address: '	38201 JONES ROAD', phoneNumber: '(905) 353-8992', price: '45645.65', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 33, irmaNumber: '00200', farmName: '', name: 'ADAMS WAYNE D', address: '890 HWY 3', phoneNumber: '', price: '567567567', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 34, irmaNumber: '00310', farmName: 'AGASSIZ VIEW FARMS', name: 'TWILHAAR GORDON H', address: '5580 ELSE', phoneNumber: '', price: '67.8678', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 35, irmaNumber: '00324', farmName: 'ALDER VIEW DAIRY LTD', name: 'ENNS WALTER & KATHY', address: '2055 264 ST', phoneNumber: '', price: '789789', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                    { hiddenCol: 36, irmaNumber: '00475', farmName: 'TEST', name: 'RUSSENBERGER R PRES', address: '	1524 LAMSON ROAD', phoneNumber: '', price: '890890', date: '2009-12-18 10:54:50.546', link: 'https://github.com/phstc/jquery-dateFormat'},
+                ],
+                page: 1,
+                records: 36
+            },
+            width: '800px',
+            height: 'auto',
+            pageSize: 5,
+            viewRecords: true
+        });
+    });
+    currencyFmatter = function(val, opts) {   
+            return formatCurrency(val); 
+        }
+
+        function formatCurrency(num) {   
+            if(!num) return;     
+            num = num.toString().replace(/\$|\,/g,'');     
+            if(isNaN(num))         
+            num = "0";     
+            sign = (num == (num = Math.abs(num)));     
+            num = Math.floor(num*100+0.50000000001);     
+            cents = num%100;     
+            num = Math.floor(num/100).toString();     
+            if(cents<10)         
+            cents = "0" + cents;     
+            for (var i = 0; i < Math.floor((num.length-(1+i))/3); i++)         
+            num = num.substring(0,num.length-(4*i+3))+','+               
+            num.substring(num.length-(4*i+3));     
+            return (((sign)?'':'-') + '$' + num + '.' + cents); 
+        }
+    //]]>
+    </script>
+</head>
+<body>
+<h2>afGrid</h2>
+<h3>Example 1 - Local Data</h3>
+<div id="grid"></div>
+</body>
+</html>
